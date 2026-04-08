@@ -16,7 +16,7 @@ pip install tracestax[rq]        # RQ support
 pip install tracestax[dramatiq]  # Dramatiq support
 ```
 
-## Quickstart — Celery
+## Quickstart - Celery
 
 Add two lines to your Celery app:
 
@@ -35,7 +35,7 @@ That's it. The SDK hooks into Celery's signal system and automatically reports:
 - Queue depth snapshots every 60 seconds
 - Parent-child task lineage when tasks spawn other tasks
 
-## Quickstart — RQ
+## Quickstart - RQ
 
 ```python
 from tracestax import configure
@@ -46,7 +46,7 @@ worker = TraceStaxWorker(client=client, queues=["default"], connection=redis_con
 worker.work()
 ```
 
-## Quickstart — Dramatiq
+## Quickstart - Dramatiq
 
 ```python
 import dramatiq
