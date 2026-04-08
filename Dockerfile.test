@@ -1,0 +1,21 @@
+FROM python:3.12.10-slim
+
+WORKDIR /sdk
+
+RUN apt-get update && apt-get install -y --no-install-recommends gcc && rm -rf /var/lib/apt/lists/*
+
+COPY pyproject.toml .
+COPY src/ src/
+COPY tests/ tests/
+
+# Install the SDK from source directly (no editable install to avoid README requirement)
+RUN pip install --no-cache-dir \
+    "requests>=2.28" \
+    "celery[redis]>=5.0" \
+    "rq>=1.16" \
+    "redis>=4.0" \
+    "dramatiq[redis]>=1.13" \
+    pytest pytest-mock pytest-timeout requests-mock && \
+    PYTHONPATH=src pip install --no-cache-dir --no-deps -e .
+
+CMD ["python", "-m", "pytest", "-v", "--timeout=30", "tests/test_client.py", "tests/test_celery.py", "tests/test_frameworks.py"]
