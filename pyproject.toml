@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "tracestax"
 version = "0.1.0"
-description = "TraceStax SDK for Python task queues and serverless functions — Celery, Dramatiq, RQ, Huey, TaskIQ, AWS Lambda, Google Cloud Functions"
+description = "TraceStax SDK for Python task queues and serverless functions - Celery, Dramatiq, RQ, Huey, TaskIQ, AWS Lambda, Google Cloud Functions"
 license = "MIT"
 requires-python = ">=3.9"
 authors = [
