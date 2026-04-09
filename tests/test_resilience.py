@@ -20,7 +20,7 @@ from __future__ import annotations
 
 import threading
 import time
-from unittest.mock import MagicMock, call, patch
+from unittest.mock import MagicMock, patch
 
 import pytest
 import requests.exceptions
@@ -632,9 +632,6 @@ class TestWatchdog:
             f"Expected queue size in warning. Got: {warning_messages}"
         )
 
-        # Restore to allow clean shutdown
-        if original_daemon and original_daemon.is_alive():
-            original_daemon = None
 
 
 # ── Lineage monkey-patch ──────────────────────────────────────────────────────
@@ -682,7 +679,6 @@ class TestLineageHooks:
         try:
             from celery import Celery, Task
             from tracestax.lineage import install_lineage_hooks
-            import tracestax.lineage as lineage_mod
         except ImportError:
             import pytest
             pytest.skip("celery not installed")

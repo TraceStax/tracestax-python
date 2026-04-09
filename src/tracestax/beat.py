@@ -69,7 +69,6 @@ class TraceStaxBeatScheduler:
             return
 
         import socket
-        import time
 
         self._tracestax_client.send_event(
             {

@@ -202,7 +202,6 @@ class TraceStaxClient:
         if not self._enabled:
             return
         if self._dry_run:
-            import json
             try:
                 raw = json.dumps(payload)
                 preview = raw[:512] + "…" if len(raw) > 512 else raw
@@ -217,7 +216,6 @@ class TraceStaxClient:
         if not self._enabled:
             return
         if self._dry_run:
-            import json
             try:
                 raw = json.dumps(payload)
                 preview = raw[:512] + "…" if len(raw) > 512 else raw
@@ -232,7 +230,6 @@ class TraceStaxClient:
         if not self._enabled:
             return None
         if self._dry_run:
-            import json
             try:
                 raw = json.dumps(payload)
                 preview = raw[:512] + "…" if len(raw) > 512 else raw

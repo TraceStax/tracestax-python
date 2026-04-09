@@ -2,7 +2,7 @@
 Integration tests that simulate real framework usage against mock-ingest.
 Verifies that each framework integration sends correctly-shaped events.
 """
-import os, time, json, requests, pytest
+import os, time, requests, pytest
 
 INGEST_URL = os.environ.get("TRACESTAX_INGEST_URL", "http://localhost:4001")
 

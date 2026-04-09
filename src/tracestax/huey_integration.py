@@ -19,7 +19,6 @@ import os
 import platform
 import time
 import traceback as tb_module
-from datetime import datetime, timezone
 from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
