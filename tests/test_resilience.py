@@ -18,6 +18,7 @@ Scenarios covered:
 
 from __future__ import annotations
 
+import importlib
 import threading
 import time
 from unittest.mock import MagicMock, patch
@@ -612,7 +613,6 @@ class TestWatchdog:
         client.send_event({"task": "w2"})
 
         # Force the daemon thread into a stopped state without triggering close()
-        original_daemon = client._daemon
         client._daemon = None  # make is_alive return False
 
         watchdog = Watchdog(client)
@@ -643,7 +643,7 @@ class TestLineageHooks:
     def setup_method(self):
         """Reset lineage module state before each test."""
         try:
-            import tracestax.lineage as lineage_mod
+            lineage_mod = importlib.import_module("tracestax.lineage")
             lineage_mod._original_apply_async = None
             lineage_mod._lineage_client = None
             lineage_mod._displacement_warned = False

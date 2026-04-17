@@ -57,3 +57,4 @@ def celery_app():
         return app
     except ImportError:
         pytest.skip("celery not installed")
+        return None
